@@ -47,11 +47,11 @@ def download():
     # Format the date as a string
     date_string = now.strftime("%Y%m%d_%H%M")
     # Create a filename using the date string
-    filename = f"{date_string}_daytoday.csv"
+    filename2 = f"{date_string}_daytoday.csv"
     query = 'select * from IncomeExpenses'
     df = pd.read_sql_query(query, con=con)
     df.set_index('id',inplace = True)
-    return Response(df.to_csv(),mimetype="text/csv",headers={"Content-Disposition":"attachment;filename="+ filename}) 
+    return Response(df.to_csv(),mimetype="text/csv",headers={"Content-Disposition":"attachment;filename="+ filename2}) 
 
 @app.route('/dashboard')
 def dashboard():
