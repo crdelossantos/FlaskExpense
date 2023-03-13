@@ -49,20 +49,10 @@ def download():
     date_string = now.strftime("%Y%m%d_%H%M")
     # Create a filename using the date string
     filename = f"{date_string}_daytoday.csv"
-    outfile = open(filename, 'w')
-
-    outcsv = csv.writer(outfile)
-    cursor = con.execute('select * from IncomeExpenses')
-    # dump column titles (optional)
-    outcsv.writerow(x[0] for x in cursor.description)
-    # dump rows
-    outcsv.writerows(cursor.fetchall())
-    con.commit()
-    con.close()
-    outfile.close()
-    flash("File downloaded ", "success")
-    return redirect(url_for("index"))
-
+    query = 'select * from IncomeExpenses'
+    df = pd.read_sql_query(query, con=con)
+    df.set_index('id',inplace = True)
+    return Response(df.to_csv(),mimetype="text/csv",headers={"Content-Disposition":"attachment;filename="+ filename}) 
 
 @app.route('/dashboard')
 def dashboard():
