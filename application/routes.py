@@ -29,8 +29,6 @@ def add_expense():
         return redirect(url_for('index'))
     return render_template('add.html', title="Add expenses", form=form)
     
-
-
 @app.route('/delete-post/<int:entry_id>')
 def delete(entry_id):
     entry = IncomeExpenses.query.get_or_404(int(entry_id))
