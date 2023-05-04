@@ -5,5 +5,3 @@ flask_wtf
 gunicorn==20.1.0
 pandas
 numpy
-
-
