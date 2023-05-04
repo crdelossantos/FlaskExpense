@@ -9,8 +9,11 @@ import csv
 import datetime
 import pandas as pd
 
-@app.before_first_request
-def create_tables():
+#@app.before_first_request
+#def create_tables():
+#    db.create_all()
+
+with app.app_context():
     db.create_all()
 
 @app.route('/')
