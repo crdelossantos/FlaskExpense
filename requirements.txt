@@ -1,4 +1,4 @@
-flask=='2.2.4'
+flask=='2.2.0'
 Flask-SQLAlchemy
 flask-login
 flask_wtf
