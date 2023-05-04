@@ -1,8 +1,9 @@
-flask=2.3.0
+flask
 Flask-SQLAlchemy
 flask-login
 flask_wtf
 gunicorn==20.1.0
 pandas
 numpy
+
 
